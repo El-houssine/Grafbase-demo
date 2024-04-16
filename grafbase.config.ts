@@ -1,7 +1,7 @@
-import { config, connector, graph } from '@grafbase/sdk' 
+import { config, connector, graph } from '@grafbase/sdk'
 
 //Creating a Standalone Graph Instance
-const g = graph.Standalone() 
+const g = graph.Standalone()
 
 //Connecting to Contentful
 const contentful = connector.GraphQL('Contentful', {
@@ -14,13 +14,18 @@ const contentful = connector.GraphQL('Contentful', {
 //Adding the Contentful Data Source
 g.datasource(contentful)
 
+
 //Extending the ContentfulProperty Type
-g.extend('ContentfulProperty', {
-  weather: {
-    returns: g.float().optional(),
-    resolver: 'contentful/property/weather',
-  },
-})
+// g.extend('ContentfulProperty', {
+//   weather: {
+//     returns: g.float().optional(),
+//     resolver: 'contentful/property/weather',
+//   },
+//   products: {
+//     returns: g.json(),
+//     resolver: 'contentful/property/products'
+//   }
+// })
 
 
 export default config({
